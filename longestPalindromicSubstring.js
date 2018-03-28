@@ -43,5 +43,5 @@ const isPalindrome = (str) => {
   return true;
 };
 
-const result = longestPalindrome('c');
+const result = longestPalindrome('applppasdsanaaaaaaaaajabmppppppppppppppppppm');
 console.log(result);
