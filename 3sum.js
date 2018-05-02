@@ -13,22 +13,23 @@
  * @param {number[]} nums
  * @return {number[][]}
  */
-const threeSum = (nums) => {
-  let solutionSet = [];
-  let currentSolution = [];
-
-  for(let i = 0; i < nums.length; i++) {
-    let front = i + 1;
-    let back = nums.length - 1;
-
-    while(front < back) {
-      let sum = nums[front] + nums[back];
-
-      
+const threeSum = (nums, target) => {
+  nums = nums.sort((a, b) => {
+    return a - b;
+  });
+  let solutions = [];
+  let sum = nums[0] + nums[1] + nums[2];
+  if(sum === target) {
+    solutions.push([nums[0], nums[1], nums[2]]);
+  }
+  for(let i = 3; i < nums.length; i++) {
+    sum += nums[i] - nums[i - 3];
+    if(sum === target) {
+      solutions.push([nums[i - 2], nums[i - 1], nums[i]]);
     }
   }
-  return solutionSet;
+  return solutions;
 };
 
-const result = threeSum([-1, 0, 1, 2, -1, -4]);
+const result = threeSum([1, 0, 1, 2, 1, 4], 3);
 console.log(result);
